@@ -1,0 +1,20 @@
+. ${ROOT_DIR}/${KERNEL_DIR}/build.config.common
+
+ARCH=arm64
+MAKE_GOALS="
+Image
+modules
+"
+
+FILES="
+arch/arm64/boot/Image
+vmlinux
+System.map
+vmlinux.symvers
+modules.builtin
+modules.builtin.modinfo
+"
+
+DEFCONFIG=protected_vm_defconfig
+PRE_DEFCONFIG_CMDS="KCONFIG_CONFIG=${ROOT_DIR}/common/arch/arm64/configs/${DEFCONFIG} ${ROOT_DIR}/common/scripts/kconfig/merge_config.sh -m -r ${ROOT_DIR}/common/arch/arm64/configs/microdroid_arm64.defconfig ${ROOT_DIR}/common/arch/arm64/configs/protected_vm.fragment"
+POST_DEFCONFIG_CMDS="rm ${ROOT_DIR}/common/arch/arm64/configs/${DEFCONFIG}"

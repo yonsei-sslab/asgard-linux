@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: GPL-2.0
+
+config IO_MEM
+	tristate "IO_MEM"
+	help
+	  I/O memory shared between host and guest. Could be used to share
+	  inference input and output.
